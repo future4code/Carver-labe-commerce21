@@ -18,7 +18,46 @@ const DivTeste2 = styled.div`
   width: 25vw;
 `
 
-const cards = "boa tarde"
+const cardsProdutos = [
+  {
+    id: 1,
+    nome: "produto 1",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+  {
+    id: 2,
+    nome: "produto 2",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+  {
+    id: 3,
+    nome: "produto 3",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+  {
+    id: 4,
+    nome: "produto 4",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+  {
+    id: 5,
+    nome: "produto 5",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+  {
+    id: 6,
+    nome: "produto 6",
+    imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
+    valor: 100,
+  },
+]
+
+
 
 class App extends React.Component {
   state = {
@@ -44,6 +83,7 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <MainContainer>
         <Filter
@@ -51,7 +91,10 @@ class App extends React.Component {
           filtrarMaximo={this.onChangeValorMax}
           buscar={this.onChangeBuscar}
         />
-        <DivTeste1><h1>produto</h1></DivTeste1>
+        <DivTeste1>
+          <h1>produto</h1>
+          
+        </DivTeste1>
         <DivTeste2><h1>carrinho</h1></DivTeste2>
       </MainContainer>
     );
