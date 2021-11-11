@@ -1,5 +1,5 @@
 import React from 'react';
-import Carrinho from './Carrinho';
+import Carrinho from "./componentes/Carrinho";
 
 export default class App extends React.Component {
   render() {
