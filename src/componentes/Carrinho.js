@@ -39,16 +39,16 @@ export default class Carrinho extends React.Component{
       <main>
          
         <div>
-            <p>Capacete Espacial </p>
+            <p>Capacete Espacial R$400,00 </p>
             <button onClick = {this.onClickAdicionar1}>Adicionar ao carrinho</button>
         </div> 
         <div>
-            <p>Traje pra andar na Lua</p>
+            <p>Traje pra andar na Lua R$600,00</p>
             <button onClick = {this.onClickAdicionar2}>Adicionar ao carrinho</button>
 
         </div>    
         <div>
-            <p>Arma Laser</p>
+            <p>Arma Laser R$950,00</p>
             <button onClick = {this.onClickAdicionar3}>Adicionar ao carrinho</button>
         </div>    
             <button onClick = {this.onClickLimpar}>Limpar Carrinho</button>
