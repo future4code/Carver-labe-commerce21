@@ -12,7 +12,7 @@ export default class Carrinho extends React.Component{
     this.setState({quantidade:this.state.quantidade +1})
     let num = this.state.total+400
     this.setState({total: num})
-    
+    console.log("coisou")
   }
   
   onClickAdicionar2 = () =>{

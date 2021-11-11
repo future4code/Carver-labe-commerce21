@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import Carrinho from "./componentes/Carrinho";
-=======
->>>>>>> d9e844b4ba465331917ff630c75465aad6357e9f
-
 import styled from 'styled-components';
 import Filtro from './componentes/Filtro';
 import Produtos from './componentes/Produtos';
@@ -37,6 +33,8 @@ class App extends React.Component {
     valorMaximo: 1000,
     valorMinimo: 0,
     busca: "",
+    ordem: "titulo",
+    ordenacao: "",
     produtos: [
       {
         id: 1,
@@ -94,6 +92,18 @@ class App extends React.Component {
     console.log("Buscando:", this.state.busca)
   }
 
+  ordenarCards = (e) => {
+    this.setState({
+      ordem: e.target.value
+    })
+  }
+
+  ordenacaoCards = (e) => {
+    this.setState({
+      ordenacao: e.target.value
+    })
+  }
+
   render() {
     let componentes = this.state.produtos
     .filter(produto => {
@@ -104,6 +114,14 @@ class App extends React.Component {
     })
     .filter(produto => {
       return this.state.valorMaximo === "" || produto.valor <= this.state.valorMaximo
+    })
+    .sort((produto,produto2) => {
+      switch (this.state.ordem){
+        case "titulo":
+          return this.state.ordenacao * produto.nome.localeCompare(produto2.nome)
+        default:
+          return this.state.ordenacao * (produto.valor - produto2.valor)
+    }
     })
     .map((produto) => {
       return (
@@ -126,12 +144,34 @@ class App extends React.Component {
           valueValorMin={this.state.valorMinimo}
         />
         <DivTeste1>
-          <h1>produtos</h1>
+          <span>
+            <h1>produtos</h1>
+            <label for="ordem">Ordenação:</label>
+            <select 
+              name="ordem"
+              value={this.state.ordem}
+              onChange={this.ordenarCards}
+            >
+              <option value="titulo">Título</option>
+              <option value="preco">Preço</option>
+            </select>
+          </span>
+          <select 
+              name="ordem"
+              value={this.state.ordenacao}
+              onChange={this.ordenacaoCards}
+            >
+              <option value={1}>Crescente</option>
+              <option value={-1}>Decrescente</option>
+            </select>
           <DivListaProdutos>
           {componentes}
           </DivListaProdutos>
         </DivTeste1>
-        <DivTeste2><h1>carrinho</h1></DivTeste2>
+        <DivTeste2>
+          <h1>carrinho</h1>
+          <Carrinho/>
+        </DivTeste2>
       </MainContainer>
     );
   }
