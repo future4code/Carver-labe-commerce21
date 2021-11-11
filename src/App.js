@@ -1,4 +1,8 @@
 import React from 'react';
+<<<<<<< HEAD
+import Carrinho from "./componentes/Carrinho";
+=======
+>>>>>>> d9e844b4ba465331917ff630c75465aad6357e9f
 
 import styled from 'styled-components';
 import Filtro from './componentes/Filtro';
