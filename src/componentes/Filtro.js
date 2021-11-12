@@ -12,6 +12,7 @@ const DivFiltro = styled.div`
 `
 const Input = styled.input`
     width: 100%;
+    max-width: 300px;
 `
 
 
@@ -23,13 +24,11 @@ export default function Filtro(props) {
             <Input
                 onChange={props.filtrarMinimo}
                 type="number"
-                // value={props.valueValorMin}
             />
             <label>Valor máximo:</label>
             <Input
                 onChange={props.filtrarMaximo}
                 type="number"
-                // value={props.valueValorMax}
             />
             <label>Busca por nome:</label>
             <Input
