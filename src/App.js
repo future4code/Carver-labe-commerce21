@@ -146,26 +146,50 @@ class App extends React.Component {
     })
     let controle = 0;
     let carrinhoCarregado = this.state.carrinho.map((itemCarrinho) => {
-      if(itemCarrinho.produto.id == e.target.value){
+      if (itemCarrinho.produto.id == e.target.value) {
         itemCarrinho.quantidade++
         controle++
       }
       return itemCarrinho
     })
 
-    if(controle == 0){
+    if (controle == 0) {
       this.setState({
-        carrinho: [...this.state.carrinho,{
+        carrinho: [...this.state.carrinho, {
           quantidade: 1,
           produto: produtoSelecionado[0]
         }]
-      },() => console.log(this.state.carrinho))
-    }else{
+      }, () => console.log(this.state.carrinho))
+    } else {
       this.setState({
         carrinho: carrinhoCarregado
       }, () => console.log(this.state.carrinho))
     }
   };
+
+  excluirDoCarrinho = (e) => {
+    let controle = 0
+    const novoCarrinho = this.state.carrinho.map((produto) => {
+      if (produto.produto.id == e.target.value) {
+        if (produto.quantidade > 1) {
+          produto.quantidade--
+          controle++
+        }
+      }
+      return produto
+    })
+    console.log("NovoCarrinho", novoCarrinho)
+    if (controle == 0) {
+      const excluir = this.state.carrinho.filter((produto) => {
+        return produto.produto.id !== Number(e.target.value)
+      })
+      this.setState({ carrinho: excluir })
+    }else{
+      this.setState({carrinho: novoCarrinho})
+    }
+
+    
+  }
 
 
   render() {
@@ -188,6 +212,7 @@ class App extends React.Component {
         }
       })
       .map((produto) => {
+        // console.log(produto.id)
         return (
           <DivProdutos>
             <Produtos
@@ -202,21 +227,21 @@ class App extends React.Component {
           </DivProdutos>
         )
       })
-      
 
-      const listaCarrinho = this.state.carrinho.map((produtoNoCarrinho) => {
-        return (
-          <DivCarrinhoCards>
+
+    const listaCarrinho = this.state.carrinho.map((produtoNoCarrinho) => {
+      console.log(produtoNoCarrinho)
+      return (
+        <DivCarrinhoCards>
           <CarrinhoX
             nomeProduto={produtoNoCarrinho.produto.nome}
             valorProduto={produtoNoCarrinho.produto.valor}
-            quantidade={produtoNoCarrinho.quantidade}
-            excluir={() => this.excluirProduto(produtoNoCarrinho.id)}      
+            quantidade={produtoNoCarrinho.quantidade}    
           />
-          <button>Excluir</button>
-          </DivCarrinhoCards>
-        );
-      });
+          <button value={produtoNoCarrinho.produto.id} onClick={this.excluirDoCarrinho}>Remover</button>
+        </DivCarrinhoCards>
+      );
+    });
 
 
     return (
