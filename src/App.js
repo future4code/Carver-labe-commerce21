@@ -68,7 +68,7 @@ class App extends React.Component {
     valorMaximo: 1000,
     valorMinimo: 0,
     busca: "",
-    ordem: "titulo",
+    ordem: "",
     ordenacao: "",
     carrinho: [],
     produtos: [
@@ -178,22 +178,30 @@ class App extends React.Component {
       }
       return produto
     })
-    console.log("NovoCarrinho", novoCarrinho)
+    // console.log("NovoCarrinho", novoCarrinho)
     if (controle == 0) {
       const excluir = this.state.carrinho.filter((produto) => {
         return produto.produto.id !== Number(e.target.value)
       })
       this.setState({ carrinho: excluir })
-    }else{
-      this.setState({carrinho: novoCarrinho})
+    } else {
+      this.setState({ carrinho: novoCarrinho })
     }
 
-    
+
   }
 
 
   render() {
     let componentes = this.state.produtos
+      .sort((produto, produto2) => {
+        switch (this.state.ordem) {
+          case "titulo":
+            return this.state.ordenacao * produto.nome.localeCompare(produto2.nome)
+          default:
+            return this.state.ordenacao * (produto.valor - produto2.valor)
+        }
+      })
       .filter(produto => {
         return produto.nome.toLowerCase().includes(this.state.busca.toLowerCase())
       })
@@ -203,14 +211,7 @@ class App extends React.Component {
       .filter(produto => {
         return this.state.valorMaximo === "" || produto.valor <= this.state.valorMaximo
       })
-      .sort((produto, produto2) => {
-        switch (this.state.ordem) {
-          case "titulo":
-            return this.state.ordenacao * produto.nome.localeCompare(produto2.nome)
-          default:
-            return this.state.ordenacao * (produto.valor - produto2.valor)
-        }
-      })
+
       .map((produto) => {
         // console.log(produto.id)
         return (
@@ -230,13 +231,13 @@ class App extends React.Component {
 
 
     const listaCarrinho = this.state.carrinho.map((produtoNoCarrinho) => {
-      console.log(produtoNoCarrinho)
+      // console.log(produtoNoCarrinho)
       return (
         <DivCarrinhoCards>
           <CarrinhoX
             nomeProduto={produtoNoCarrinho.produto.nome}
             valorProduto={produtoNoCarrinho.produto.valor}
-            quantidade={produtoNoCarrinho.quantidade}    
+            quantidade={produtoNoCarrinho.quantidade}
           />
           <button value={produtoNoCarrinho.produto.id} onClick={this.excluirDoCarrinho}>Remover</button>
         </DivCarrinhoCards>
