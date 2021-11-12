@@ -29,17 +29,24 @@ const BotaoExcluir = styled.button`
 
 
 export default class CarrinhoX extends React.Component{
-  state = {
-    carrinho: [],
-  }
-  
+
+  // excluirDoCarrinho = (e) => {
+  //   const excluir = this.state.carrinho.filter((produto) => {
+  //     return  produto.id !== e.target.value
+  //   })
+  //   this.setState({carrinho: excluir})
+  //   console.log("sera?")
+  // }
+
  
   render(){
     return(
       <Container>
                 <ListaProdutos>
-                    {this.props.quantidade}x {this.props.nomeProduto}: R${this.props.valorProduto * this.props.quantidade},00                                                                                
+                    {this.props.quantidade}x {this.props.nomeProduto}: R${this.props.valorProduto * this.props.quantidade},00      
                 </ListaProdutos>
+                {/* <BotaoExcluir  onClick={this.props.excluir}>Remover</BotaoExcluir>                                                                           */}
+
            </Container>
     )
   }
