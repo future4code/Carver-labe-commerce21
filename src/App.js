@@ -8,6 +8,8 @@ import CarrinhoX from './componentes/CarrinhoX';
 const MainContainer = styled.div`
   display: flex;
   padding: 15px;
+  max-width: 1500px;
+  margin: auto;
 `
 const DivProdutos = styled.div`
   border: 1px solid black;
@@ -29,11 +31,16 @@ const DivCards = styled.div`
 
 const DivCarrinho = styled.div`
   border: 2px solid black;
-  width: 25vw;
+  width: 20vw;
+  height: 90vh;
+  flex-direction: column;
+  
   h2{
     text-align: center;
   }
   p{
+    display: flex;
+    justify-content: space-between;
     text-align: right;
     margin-right: 20px;
     font-size: 20px;
@@ -44,6 +51,15 @@ const DivListaProdutos = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 5px;
+
+  @media screen and (max-device-width : 800px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+  @media screen and (max-device-width : 500px) {
+    display: grid;
+    grid-template-columns: 1fr;
+}
 `
 
 const ParteOrdenacao = styled.div`
@@ -65,7 +81,7 @@ const DivCarrinhoCards = styled.div`
 
 class App extends React.Component {
   state = {
-    valorMaximo: 1000,
+    valorMaximo: Infinity,
     valorMinimo: 0,
     busca: "",
     ordem: "",
@@ -74,40 +90,41 @@ class App extends React.Component {
     produtos: [
       {
         id: 1,
-        nome: "produto 1",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 100,
+        nome: "Meteorito raro",
+        imagem: "https://conteudo.imguol.com.br/c/noticias/d1/2021/03/10/meteorito-1615402541578_v2_450x337.jpg",
+        valor: 1299,
       },
       {
         id: 2,
-        nome: "produto 2",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 200,
+        nome: "Foguete usado na missão Apollo 11",
+        imagem: "https://s2.glbimg.com/WVYPg1xv0S84S7e5l7N2MpT0zcQ=/e.glbimg.com/og/ed/f/original/2019/07/16/624109main_1969-05-20-2_full.jpg",
+        valor: 9999,
       },
       {
         id: 3,
-        nome: "produto 3",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 150,
+        nome: "Ônibus espacial",
+        imagem: "https://cdn-cavok.nuneshost.com/wp-content/uploads/2020/06/Buran_plataforma.jpg",
+        valor: 7999,
       },
       {
         id: 4,
-        nome: "produto 4",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 300,
+        nome: "Camisa astronauta",
+        imagem: "https://m.media-amazon.com/images/I/71ZqegMi8lL._AC_SX679_.jpg",
+        valor: 150,
       },
       {
         id: 5,
-        nome: "produto 5",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 80,
+        nome: "Camisa planetas",
+        imagem: "https://a-static.mlcdn.com.br/618x463/camiseta-planetas-camisa-espaco-galaxias-darkwood/darkwoodshop2/11228651119/98261ab296824e6d69a6e7f6b0c5ee7d.jpg",
+        valor: 300,
       },
       {
         id: 6,
-        nome: "produto 6",
-        imagem: "http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png",
-        valor: 50,
+        nome: "Brinquedo foguete",
+        imagem: "https://http2.mlstatic.com/D_NQ_NP_725239-MLB32517868343_102019-O.webp",
+        valor: 80,
       },
+
     ]
   }
 

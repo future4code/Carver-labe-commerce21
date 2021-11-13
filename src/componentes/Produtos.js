@@ -8,8 +8,11 @@ import styled from "styled-components";
 const DivProdutos = styled.div`
     display: flex;
     flex-direction: column;
+    
     img{
         width: 100%;
+        height: 200px;
+
     }
     p{
         margin-left: 10px;
@@ -17,6 +20,7 @@ const DivProdutos = styled.div`
     button{
         width: 50%;
         margin: auto;
+        
     }
 `
 
