@@ -10,6 +10,7 @@ const DivProdutos = styled.div`
     flex-direction: column;
     img{
         width: 100%;
+        height: 200px
     }
     p{
         margin-left: 10px;
@@ -17,6 +18,7 @@ const DivProdutos = styled.div`
     button{
         width: 50%;
         margin: auto;
+        margin-bottom: 100px;
     }
 `
 
