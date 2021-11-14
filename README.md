@@ -1,6 +1,6 @@
 # Projeto: LabeCommerce 🚀
 
-status: finalizado ✔️
+#### Status: finalizado ✔️
 
 ### A Loja Virtual é uma aplicação Web onde os usuários tem acesso à uma loja de artigos espaciais onde podem selecionar produtos e adicioná-los ao carrinho. 
 
